@@ -1,9 +1,19 @@
-let jsonRes = '{"fact":"Of all the species of cats, the domestic cat is the only species able to hold its tail vertically while walking. All species of wild cats hold their tail horizontally or tucked between their legs while walking.","length":210}';
+let url = "https://catfact.ninja/fact";
 
-let validRes = JSON.parse(jsonRes);
-console.log(validRes.fact);
-
-let student = {
-    name: "Rushi",
-    marks: 95,
-};
+fetch(url)
+ .then((res) => {
+    return res.json();
+ })
+ .then((data1) => {
+    console.log("data1 =",data1.fact);
+    return fetch(url);
+ })
+ .then((res) => {
+    return res.json();
+ })
+ .then((data2) => {
+   console.log("data2 =",data2.fact);
+ })
+ .catch((err) => {
+    console.log("ERROR -", err);
+ })
