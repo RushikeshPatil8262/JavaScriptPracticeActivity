@@ -1,23 +1,44 @@
-let btn = document.querySelector("button");
-let url2 = "https://dog.ceo/api/breeds/image/random";
+const url = "https://icanhazdadjoke.com/";
 
-btn.addEventListener("click", async () => {
-    let link = await getImage ();
-    let img = document.querySelector("#result");
-    img.setAttribute("src", link);
-    console.log(link);
-});
-
-async function getImage() {
+async function getJokes() {
     try {
-        let res = await axios.get(url2);
-       return res.data.message;
+        const config = { headers: {Accept : "application/json" } };
+        let res = await axios.get(url, config);
+        console.log(res.data);
     }
-    catch (e) {
-        console.log("ERROR -", e);
-        return "/";
+    catch(err) {
+        console.log(err);
     }
 }
+
+
+
+
+
+
+
+
+
+// let btn = document.querySelector("button");
+// let url2 = "https://dog.ceo/api/breeds/image/random";
+
+// btn.addEventListener("click", async () => {
+//     let link = await getImage ();
+//     let img = document.querySelector("#result");
+//     img.setAttribute("src", link);
+//     console.log(link);
+// });
+
+// async function getImage() {
+//     try {
+//         let res = await axios.get(url2);
+//        return res.data.message;
+//     }
+//     catch (e) {
+//         console.log("ERROR -", e);
+//         return "/";
+//     }
+// }
 
 // btn.addEventListener("click", async () => {
 //     let fact = await getFacts();
